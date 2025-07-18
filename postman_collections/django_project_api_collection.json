@@ -427,6 +427,130 @@
           "response": []
         }
       ]
+    },
+    {
+      "name": "Contacts",
+      "description": "All API endpoints for managing contacts (Requires Authentication)",
+      "item": [
+        {
+          "name": "List All Contacts",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CSRFToken",
+                "value": "{{csrf_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/contacts/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["contacts", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Contact",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CSRFToken",
+                "value": "{{csrf_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"platform_user_id\": 1,\n  \"session_id\": 1,\n  \"external_id\": \"linkedin_123\",\n  \"profile_url\": \"https://www.linkedin.com/in/john-doe\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"name\": \"John Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"phone\": \"+1234567890\",\n  \"tags\": [\"developer\", \"python\", \"senior\"],\n  \"notes\": \"Great developer, worked at Google for 5 years\",\n  \"profile_type\": \"person\",\n  \"headline\": \"Senior Software Engineer\",\n  \"industry\": \"Technology\",\n  \"location\": \"San Francisco, CA\",\n  \"about\": \"Passionate about building great software and leading engineering teams\",\n  \"connections_count\": 500,\n  \"followers_count\": 1000,\n  \"metadata\": {\n    \"company\": \"Google\",\n    \"experience\": \"10 years\",\n    \"skills\": [\"Python\", \"Django\", \"React\"]\n  },\n  \"is_connection\": true\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/contacts/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["contacts", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Contact by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CSRFToken",
+                "value": "{{csrf_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/contacts/1/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["contacts", "1", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Contact",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CSRFToken",
+                "value": "{{csrf_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"platform_user_id\": 1,\n  \"session_id\": 1,\n  \"external_id\": \"linkedin_123\",\n  \"profile_url\": \"https://www.linkedin.com/in/john-doe\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe Updated\",\n  \"name\": \"John Doe Updated\",\n  \"email\": \"john.doe.updated@example.com\",\n  \"phone\": \"+1234567890\",\n  \"tags\": [\"developer\", \"python\", \"senior\", \"manager\"],\n  \"notes\": \"Great developer, worked at Google for 5 years, now a team lead\",\n  \"profile_type\": \"person\",\n  \"headline\": \"Senior Software Engineer & Team Lead\",\n  \"industry\": \"Technology\",\n  \"location\": \"San Francisco, CA\",\n  \"about\": \"Passionate about building great software and leading engineering teams\",\n  \"connections_count\": 600,\n  \"followers_count\": 1200,\n  \"metadata\": {\n    \"company\": \"Google\",\n    \"experience\": \"10 years\",\n    \"skills\": [\"Python\", \"Django\", \"React\", \"Leadership\"],\n    \"promotion_date\": \"2024-01-15\"\n  },\n  \"is_connection\": true\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/contacts/1/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["contacts", "1", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Contact",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CSRFToken",
+                "value": "{{csrf_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/contacts/1/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["contacts", "1", ""]
+            }
+          },
+          "response": []
+        }
+      ]
     }
   ]
 } 
