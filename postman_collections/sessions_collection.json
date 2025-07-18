@@ -1,0 +1,140 @@
+{
+  "info": {
+    "name": "Scraper - Sessions",
+    "description": "RESTful API for managing scraping sessions",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "BASE_URL",
+      "value": "http://localhost:8000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Sessions",
+      "description": "All API endpoints for managing sessions",
+      "item": [
+        {
+          "name": "List All Sessions",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CSRFToken",
+                "value": "{{csrf_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/sessions/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["sessions", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Session",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CSRFToken",
+                "value": "{{csrf_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"platform_user_id\": 1,\n  \"type\": \"scraping\",\n  \"status\": \"pending\",\n  \"errors_count\": 0,\n  \"parameters_json\": {\n    \"target_url\": \"https://www.linkedin.com\",\n    \"max_pages\": 10,\n    \"delay_between_requests\": 2\n  },\n  \"ip_address\": \"192.168.1.100\",\n  \"port\": 8080,\n  \"session_cookies_json\": {\n    \"session_id\": \"abc123\",\n    \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/sessions/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["sessions", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Session by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CSRFToken",
+                "value": "{{csrf_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/sessions/1/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["sessions", "1", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Session",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CSRFToken",
+                "value": "{{csrf_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"platform_user_id\": 1,\n  \"type\": \"scraping\",\n  \"status\": \"running\",\n  \"errors_count\": 2,\n  \"parameters_json\": {\n    \"target_url\": \"https://www.linkedin.com\",\n    \"max_pages\": 15,\n    \"delay_between_requests\": 3,\n    \"retry_count\": 1\n  },\n  \"ip_address\": \"192.168.1.100\",\n  \"port\": 8080,\n  \"session_cookies_json\": {\n    \"session_id\": \"abc123\",\n    \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36\",\n    \"retry_count\": 1\n  },\n  \"started_at\": \"2024-01-15T10:30:00Z\"\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/sessions/1/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["sessions", "1", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Session",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CSRFToken",
+                "value": "{{csrf_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/sessions/1/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["sessions", "1", ""]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+} 

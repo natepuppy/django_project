@@ -44,9 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_celery_beat',
     'rest_framework',
-    # 'linkedin_automation',
     'platforms',
     'platform_users',
+    'scraping_sessions',
 ]
 
 MIDDLEWARE = [

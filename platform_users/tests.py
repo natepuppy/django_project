@@ -1,10 +1,17 @@
 from django.test import TestCase
+from django.contrib.auth.models import User
 from .models import PlatformUser
 import json
 
 class PlatformUserViewsTestCase(TestCase):
     @classmethod
     def setUpTestData(cls):
+        # Create a test user for authentication
+        cls.test_user = User.objects.create_user(
+            username='testuser',
+            password='testpass123'
+        )
+        
         cls.platform_user1 = PlatformUser.objects.create(
             user_id=1,
             platform_id=1,
@@ -29,6 +36,10 @@ class PlatformUserViewsTestCase(TestCase):
             daily_connection_request_count=0,
             weekly_connection_request_count=0
         )
+
+    def setUp(self):
+        # Login the test user before each test
+        self.client.login(username='testuser', password='testpass123')
 
     def test_index_get_successful(self):
         response = self.client.get('/platform_users/')

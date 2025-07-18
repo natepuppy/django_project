@@ -23,4 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('platforms/', include('platforms.urls')),
     path('platform_users/', include('platform_users.urls')),
+    path('sessions/', include('scraping_sessions.urls')),
 ]

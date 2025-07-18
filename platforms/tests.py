@@ -1,10 +1,17 @@
 from django.test import TestCase
+from django.contrib.auth.models import User
 from .models import Platform
 import json
 
 class PlatformViewsTestCase(TestCase):
     @classmethod
     def setUpTestData(cls):
+        # Create a test user for authentication
+        cls.test_user = User.objects.create_user(
+            username='testuser',
+            password='testpass123'
+        )
+        
         cls.platform1 = Platform.objects.create(
             name='LinkedIn',
             base_url='https://www.linkedin.com',
@@ -19,6 +26,10 @@ class PlatformViewsTestCase(TestCase):
             has_captcha=False,
             is_active=True
         )
+
+    def setUp(self):
+        # Login the test user before each test
+        self.client.login(username='testuser', password='testpass123')
 
     def test_index_get_successful(self):
         response = self.client.get('/platforms/')
