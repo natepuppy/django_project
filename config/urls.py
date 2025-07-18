@@ -1,4 +1,6 @@
 """
+### Equivalent to routes.rb in Rails. ###
+
 URL configuration for django_project project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:

@@ -6,7 +6,7 @@ import sys
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_project.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
@@ -20,3 +20,21 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+# # Development
+# python manage.py runserver          # Start dev server (like rails server)
+# python manage.py shell              # Interactive Python shell (like rails console)
+
+# # Database
+# python manage.py migrate            # Run migrations (like rails db:migrate)
+# python manage.py makemigrations     # Create migration files (like rails generate migration)
+# python manage.py createsuperuser    # Create admin user (like rails admin:create)
+
+# # Apps
+# python manage.py startapp blog      # Create new app (like rails generate model)
+
+# # Utilities
+# python manage.py collectstatic      # Collect static files (like rails assets:precompile)
+# python manage.py check              # Check for problems (like rails routes)
+
