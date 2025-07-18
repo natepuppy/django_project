@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     # 'linkedin_automation',
     'platforms',
+    'platform_users',
 ]
 
 MIDDLEWARE = [

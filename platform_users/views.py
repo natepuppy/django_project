@@ -2,8 +2,8 @@ from django.shortcuts import get_object_or_404
 from django.views.decorators.http import require_http_methods
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from .models import Platform
-from .serializers import PlatformSerializer
+from .models import PlatformUser
+from .serializers import PlatformUserSerializer
 import json
 
 @csrf_exempt
@@ -25,64 +25,64 @@ def show(request, id):
         return delete(request, id)
 
 def get_many(request):
-    platforms = Platform.objects.all()
-    serializer = PlatformSerializer(platforms, many=True)
+    platform_users = PlatformUser.objects.all()
+    serializer = PlatformUserSerializer(platform_users, many=True)
     return JsonResponse({
         'status': 'success',
-        'message': 'Platforms fetched successfully',
+        'message': 'Platform users fetched successfully',
         'data': serializer.data
     })
 
 def get_one(request, id):
-    platform = get_object_or_404(Platform, id=id)
-    serializer = PlatformSerializer(platform)
+    platform_user = get_object_or_404(PlatformUser, id=id)
+    serializer = PlatformUserSerializer(platform_user)
     return JsonResponse({
         'status': 'success',
-        'message': 'Platform fetched successfully',
+        'message': 'Platform user fetched successfully',
         'data': serializer.data
     })
 
 def create(request):
     data = json.loads(request.body)
-    serializer = PlatformSerializer(data=data)
+    serializer = PlatformUserSerializer(data=data)
     
     if serializer.is_valid():
         serializer.save()
         return JsonResponse({
             'status': 'success',
-            'message': 'Platform created successfully',
+            'message': 'Platform user created successfully',
             'data': serializer.data
         }, status=201)
     else:
         return JsonResponse({
             'status': 'error',
-            'message': 'Platform creation failed',
+            'message': 'Platform user creation failed',
             'errors': serializer.errors
         }, status=400)
 
 def update(request, id):
     data = json.loads(request.body)
-    platform = get_object_or_404(Platform, id=id)
-    serializer = PlatformSerializer(platform, data=data, partial=True)
+    platform_user = get_object_or_404(PlatformUser, id=id)
+    serializer = PlatformUserSerializer(platform_user, data=data, partial=True)
     
     if serializer.is_valid():
         serializer.save()
         return JsonResponse({
             'status': 'success',
-            'message': 'Platform updated successfully',
+            'message': 'Platform user updated successfully',
             'data': serializer.data
         })
     else:
         return JsonResponse({
             'status': 'error',
-            'message': 'Platform update failed',
+            'message': 'Platform user update failed',
             'errors': serializer.errors
         }, status=400)
 
 def delete(request, id):
-    platform = get_object_or_404(Platform, id=id)
-    platform.delete()
+    platform_user = get_object_or_404(PlatformUser, id=id)
+    platform_user.delete()
     return JsonResponse({
         'status': 'success',
-        'message': 'Platform deleted successfully'
+        'message': 'Platform user deleted successfully'
     }, status=204)
