@@ -1,12 +1,12 @@
 from django.shortcuts import get_object_or_404
 from django.views.decorators.http import require_http_methods
 from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 from .models import Platform
 from .serializers import PlatformSerializer
 import json
 
-@csrf_exempt
+@login_required
 @require_http_methods(["GET", "POST"])
 def index(request):
     if request.method == "GET":
@@ -14,7 +14,7 @@ def index(request):
     elif request.method == "POST":
         return create(request)
 
-@csrf_exempt
+@login_required
 @require_http_methods(["GET", "PUT", "PATCH", "DELETE"])
 def show(request, id):
     if request.method == "GET":

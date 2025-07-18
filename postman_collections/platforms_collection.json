@@ -1,0 +1,140 @@
+{
+  "info": {
+    "name": "Scraper - Platforms",
+    "description": "RESTful API for managing platforms",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "BASE_URL",
+      "value": "http://localhost:8000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Platforms",
+      "description": "All API endpoints for managing platforms",
+      "item": [
+        {
+          "name": "List All Platforms",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CSRFToken",
+                "value": "{{csrf_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/platforms/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["platforms", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Platform",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CSRFToken",
+                "value": "{{csrf_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"LinkedIn\",\n  \"base_url\": \"https://www.linkedin.com\",\n  \"login_url\": \"https://www.linkedin.com/login\",\n  \"has_captcha\": false,\n  \"is_active\": true\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/platforms/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["platforms", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Platform by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CSRFToken",
+                "value": "{{csrf_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/platforms/1/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["platforms", "1", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Platform",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CSRFToken",
+                "value": "{{csrf_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"LinkedIn Updated\",\n  \"base_url\": \"https://www.linkedin.com\",\n  \"login_url\": \"https://www.linkedin.com/login\",\n  \"has_captcha\": true,\n  \"is_active\": false\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/platforms/1/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["platforms", "1", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Platform",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CSRFToken",
+                "value": "{{csrf_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/platforms/1/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["platforms", "1", ""]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+} 

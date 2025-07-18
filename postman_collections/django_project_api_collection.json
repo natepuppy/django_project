@@ -1,0 +1,308 @@
+{
+  "info": {
+    "name": "Scraper",
+    "description": "Complete RESTful API collection for Django Project - Platforms and Platform Users (Requires Authentication)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "BASE_URL",
+      "value": "http://localhost:8000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Authentication",
+      "description": "Login to get session access",
+      "item": [
+        {
+          "name": "Login to Django Admin",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "username",
+                  "value": "admin",
+                  "description": "Your Django admin username"
+                },
+                {
+                  "key": "password",
+                  "value": "your_password",
+                  "description": "Your Django admin password"
+                },
+                {
+                  "key": "csrfmiddlewaretoken",
+                  "value": "{{csrf_token}}",
+                  "description": "CSRF token from login page"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/admin/login/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["admin", "login", ""]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Platforms",
+      "description": "All API endpoints for managing platforms (Requires Authentication)",
+      "item": [
+        {
+          "name": "List All Platforms",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CSRFToken",
+                "value": "{{csrf_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/platforms/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["platforms", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Platform",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CSRFToken",
+                "value": "{{csrf_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"LinkedIn\",\n  \"base_url\": \"https://www.linkedin.com\",\n  \"login_url\": \"https://www.linkedin.com/login\",\n  \"has_captcha\": false,\n  \"is_active\": true\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/platforms/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["platforms", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Platform by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CSRFToken",
+                "value": "{{csrf_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/platforms/1/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["platforms", "1", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Platform",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CSRFToken",
+                "value": "{{csrf_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"LinkedIn Updated\",\n  \"base_url\": \"https://www.linkedin.com\",\n  \"login_url\": \"https://www.linkedin.com/login\",\n  \"has_captcha\": true,\n  \"is_active\": false\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/platforms/1/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["platforms", "1", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Platform",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CSRFToken",
+                "value": "{{csrf_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/platforms/1/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["platforms", "1", ""]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Platform Users",
+      "description": "All API endpoints for managing platform users (Requires Authentication)",
+      "item": [
+        {
+          "name": "List All Platform Users",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CSRFToken",
+                "value": "{{csrf_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/platform_users/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["platform_users", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Platform User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CSRFToken",
+                "value": "{{csrf_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": 1,\n  \"platform_id\": 1,\n  \"username\": \"john_doe\",\n  \"email\": \"john@example.com\",\n  \"encrypted_password\": \"encrypted_password_123\",\n  \"status\": \"active\",\n  \"daily_connection_request\": 50,\n  \"weekly_connection_request_limit\": 200,\n  \"daily_connection_request_count\": 0,\n  \"weekly_connection_request_count\": 0\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/platform_users/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["platform_users", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Platform User by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CSRFToken",
+                "value": "{{csrf_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/platform_users/1/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["platform_users", "1", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Platform User",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CSRFToken",
+                "value": "{{csrf_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": 1,\n  \"platform_id\": 1,\n  \"username\": \"john_doe_updated\",\n  \"email\": \"john.updated@example.com\",\n  \"encrypted_password\": \"encrypted_password_123\",\n  \"status\": \"inactive\",\n  \"daily_connection_request\": 75,\n  \"weekly_connection_request_limit\": 300,\n  \"daily_connection_request_count\": 10,\n  \"weekly_connection_request_count\": 45\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/platform_users/1/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["platform_users", "1", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Platform User",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CSRFToken",
+                "value": "{{csrf_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/platform_users/1/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["platform_users", "1", ""]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+} 
