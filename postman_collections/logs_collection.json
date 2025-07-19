@@ -1,0 +1,140 @@
+{
+  "info": {
+    "name": "Scraper - Logs",
+    "description": "RESTful API for managing logs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "BASE_URL",
+      "value": "http://localhost:8000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Logs",
+      "description": "All API endpoints for managing logs",
+      "item": [
+        {
+          "name": "List All Logs",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CSRFToken",
+                "value": "{{csrf_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/logs/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["logs", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Log",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CSRFToken",
+                "value": "{{csrf_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": 1,\n  \"platform_user_id\": 1,\n  \"platform_id\": 1,\n  \"session_id\": 1,\n  \"contact_id\": 1,\n  \"action_id\": 1,\n  \"type\": \"info\",\n  \"message\": \"Session started successfully for user 1 on platform 1\",\n  \"code\": null,\n  \"code_path\": \"logs/views.py:25\"\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/logs/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["logs", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Log by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CSRFToken",
+                "value": "{{csrf_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/logs/1/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["logs", "1", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Log",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CSRFToken",
+                "value": "{{csrf_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": 1,\n  \"platform_user_id\": 1,\n  \"platform_id\": 1,\n  \"session_id\": 1,\n  \"contact_id\": 1,\n  \"action_id\": 1,\n  \"type\": \"warning\",\n  \"message\": \"Session started successfully for user 1 on platform 1 - but with warnings\",\n  \"code\": \"WARNING\",\n  \"code_path\": \"logs/views.py:25\"\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/logs/1/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["logs", "1", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Log",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CSRFToken",
+                "value": "{{csrf_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/logs/1/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["logs", "1", ""]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+} 

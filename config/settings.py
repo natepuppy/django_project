@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'scraping_sessions',
     'contacts',
     'actions',
+    'logs',
 ]
 
 MIDDLEWARE = [

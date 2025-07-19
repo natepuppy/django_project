@@ -26,4 +26,5 @@ urlpatterns = [
     path('sessions/', include('scraping_sessions.urls')),
     path('contacts/', include('contacts.urls')),
     path('actions/', include('actions.urls')),
+    path('logs/', include('logs.urls')),
 ]
