@@ -25,4 +25,5 @@ urlpatterns = [
     path('platform_users/', include('platform_users.urls')),
     path('sessions/', include('scraping_sessions.urls')),
     path('contacts/', include('contacts.urls')),
+    path('actions/', include('actions.urls')),
 ]

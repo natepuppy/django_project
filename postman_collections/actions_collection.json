@@ -1,0 +1,140 @@
+{
+  "info": {
+    "name": "Scraper - Actions",
+    "description": "RESTful API for managing actions",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "BASE_URL",
+      "value": "http://localhost:8000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Actions",
+      "description": "All API endpoints for managing actions",
+      "item": [
+        {
+          "name": "List All Actions",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CSRFToken",
+                "value": "{{csrf_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/actions/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["actions", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Action",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CSRFToken",
+                "value": "{{csrf_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"platform_user_id\": 1,\n  \"contact_id\": 1,\n  \"session_id\": 1,\n  \"type\": \"message\",\n  \"status\": \"pending\",\n  \"message_text\": \"Hi John, I would like to connect with you! I saw your profile and I'm impressed with your work at Google. Would you be interested in connecting?\",\n  \"retry_count\": 0\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/actions/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["actions", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Action by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CSRFToken",
+                "value": "{{csrf_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/actions/1/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["actions", "1", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Action",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CSRFToken",
+                "value": "{{csrf_token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"platform_user_id\": 1,\n  \"contact_id\": 1,\n  \"session_id\": 1,\n  \"type\": \"message\",\n  \"status\": \"accepted\",\n  \"message_text\": \"Hi John, I would like to connect with you! I saw your profile and I'm impressed with your work at Google. Would you be interested in connecting?\",\n  \"executed_at\": \"2024-01-15T10:30:00Z\",\n  \"retry_count\": 0\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/actions/1/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["actions", "1", ""]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Action",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "X-CSRFToken",
+                "value": "{{csrf_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/actions/1/",
+              "host": ["{{BASE_URL}}"],
+              "path": ["actions", "1", ""]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+} 

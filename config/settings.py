@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'platform_users',
     'scraping_sessions',
     'contacts',
+    'actions',
 ]
 
 MIDDLEWARE = [
